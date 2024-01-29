@@ -55,6 +55,9 @@ class MainActivity : AppCompatActivity() {
     private fun makeIntent(position:Int){
         val intent = Intent(this@MainActivity,DetailsActivity::class.java)
         intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.id)
+        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.userId)
+        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.title)
+        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.body)
         startActivity(intent)
     }
 }
