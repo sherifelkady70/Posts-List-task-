@@ -1,5 +1,6 @@
 package com.route.task_implemented
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -34,12 +35,27 @@ class MainActivity : AppCompatActivity() {
         viewModel.getPostLiveData().observe(this){
             postsAdapter.setList(it as ArrayList<Posts>)
         }
+
+
+        postsAdapter.onPostClick = object : PostAdapter.OnItemClickListener{
+            override fun onClickListener(post: Posts, position: Int) {
+                makeIntent(position)
+            }
+
+        }
     }
 
     private fun prepareRV(){
         postsAdapter=PostAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = postsAdapter
+    }
+
+
+    private fun makeIntent(position:Int){
+        val intent = Intent(this@MainActivity,DetailsActivity::class.java)
+        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.id)
+        startActivity(intent)
     }
 }
 

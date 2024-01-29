@@ -23,7 +23,7 @@ class PostsViewModel  : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<Posts>>, t: Throwable) {
-               t.message
+               postLiveData.value = t.suppressedExceptions as List<Posts>
             }
 
         })
