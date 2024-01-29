@@ -31,7 +31,9 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostsViewHolder>() {
         val data : Posts = postsList[position]
         holder.binding.postIdPlace.text = data.id.toString()
         holder.itemView.setOnClickListener {
-            onPostClick
+            onPostClick.let {
+                onPostClick?.onClickListener(data,position)
+            }
         }
     }
 
