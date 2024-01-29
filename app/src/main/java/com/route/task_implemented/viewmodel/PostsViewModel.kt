@@ -16,7 +16,7 @@ class PostsViewModel  : ViewModel() {
 
     fun getPostsData(){
         val api : ApiInterface = RetrofitInstance.getRetrofitInstance().create(ApiInterface::class.java)
-        val call = api.getData()
+        val call : Call<List<Posts>> = api.getData()
         call.enqueue(object : retrofit2.Callback<List<Posts>> {
             override fun onResponse(call: Call<List<Posts>>, response: Response<List<Posts>>) {
                 postLiveData.value = response.body()

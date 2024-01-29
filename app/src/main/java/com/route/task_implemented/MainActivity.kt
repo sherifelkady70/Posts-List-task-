@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.accessibility.AccessibilityManager.TouchExplorationStateChangeListener
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.route.task_implemented.api.ApiInterface
 import com.route.task_implemented.api.RetrofitInstance
@@ -26,12 +27,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
-
-
         prepareRV()
+
+        viewModel=ViewModelProvider(this)[PostsViewModel::class.java]
+        viewModel.getPostsData()
+        viewModel.getPostLiveData().observe(this){
+            postsAdapter.setList(it as ArrayList<Posts>)
+        }
     }
 
     private fun prepareRV(){
