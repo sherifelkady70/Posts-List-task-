@@ -7,10 +7,12 @@ import com.route.task_implemented.databinding.RvItemsBinding
 import com.route.task_implemented.models.Posts
 
 class PostAdapter : RecyclerView.Adapter<PostAdapter.PostsViewHolder>() {
-    lateinit var postsList : ArrayList<Posts>
+    private var postsList : ArrayList<Posts> = ArrayList()
 
-    fun setPostsList(list : ArrayList<Posts>){
-        this.postsList=list
+    fun setList(postslist : ArrayList<Posts>){
+        postsList.clear()
+        postsList.addAll(postslist)
+//        this.postsList=postslist
         notifyDataSetChanged()
     }
 
@@ -18,7 +20,7 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsViewHolder {
        val v = LayoutInflater.from(parent.context)
-        return PostsViewHolder(RvItemsBinding.inflate(v,parent,false))
+        return PostsViewHolder(RvItemsBinding.inflate(v))
     }
 
     override fun getItemCount(): Int {
@@ -28,5 +30,10 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostsViewHolder>() {
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         val data : Posts = postsList[position]
         holder.binding.postIdPlace.text = data.id.toString()
+    }
+
+    var onPostClick : OnItemClickListener?=null
+    interface OnItemClickListener{
+        fun onClickListener(post:Posts , position: Int)
     }
 }

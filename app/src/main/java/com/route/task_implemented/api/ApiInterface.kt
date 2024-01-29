@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiInterface {
     @GET("/posts")
-    fun getData() : Call<ArrayList<Posts>>
+    fun getData() : Call<List<Posts>>
 }

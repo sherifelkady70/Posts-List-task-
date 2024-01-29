@@ -6,10 +6,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    val retrofit : Retrofit  by lazy {
-        Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+    lateinit var retrofit: Retrofit
+   fun getRetrofitInstance() : Retrofit {
+       retrofit = Retrofit.Builder()
+           .baseUrl(Constants.BASE_URL)
+           .addConverterFactory(GsonConverterFactory.create())
+           .build()
+       return retrofit
+   }
 }
