@@ -30,6 +30,9 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostsViewHolder>() {
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         val data : Posts = postsList[position]
         holder.binding.postIdPlace.text = data.id.toString()
+        holder.itemView.setOnClickListener {
+            onPostClick
+        }
     }
 
     var onPostClick : OnItemClickListener?=null
