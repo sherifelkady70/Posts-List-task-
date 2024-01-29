@@ -54,10 +54,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun makeIntent(position:Int){
         val intent = Intent(this@MainActivity,DetailsActivity::class.java)
-        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.id)
-        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.userId)
-        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.title)
-        intent.putExtra("", viewModel.getPostLiveData().value?.get(position)?.body)
+        intent.putExtra(Constants.ID_KEY, viewModel.getPostLiveData().value?.get(position)?.id)
+        intent.putExtra(Constants.USERID_KEY, viewModel.getPostLiveData().value?.get(position)?.userId)
+        Log.d("makeIntent","${viewModel.getPostLiveData().value?.get(position)?.userId}")
+        intent.putExtra(Constants.TITLE_KEY, viewModel.getPostLiveData().value?.get(position)?.title)
+        intent.putExtra(Constants.BODY_KEY, viewModel.getPostLiveData().value?.get(position)?.body)
         startActivity(intent)
     }
 }
