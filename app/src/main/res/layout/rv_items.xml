@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/postId_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/postId_place"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:text="@string/post_id"
+        />
+    <TextView
+        android:id="@+id/postId_place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/postId_txt"
+        app:layout_constraintTop_toTopOf="@id/postId_txt"
+        app:layout_constraintBottom_toBottomOf="@id/postId_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="1"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
