@@ -1,7 +1,8 @@
-package com.route.task_implemented
+package com.route.task_implemented.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.route.task_implemented.databinding.RvItemsBinding
 import com.route.task_implemented.models.Posts
@@ -10,10 +11,13 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostsViewHolder>() {
     private var postsList : ArrayList<Posts> = ArrayList()
 
     fun setList(postslist : ArrayList<Posts>){
-        postsList.clear()
-        postsList.addAll(postslist)
-//        this.postsList=postslist
-        notifyDataSetChanged()
+        val diffResult = DiffUtil.calculateDiff(PostsDiffUtill(postsList,postslist))
+        postsList = postslist
+        diffResult.dispatchUpdatesTo(this)
+//        postsList.clear()
+//        postsList.addAll(postslist)
+////        this.postsList=postslist
+//        notifyDataSetChanged()
     }
 
     class PostsViewHolder(val binding : RvItemsBinding) : RecyclerView.ViewHolder(binding.root)
@@ -29,6 +33,8 @@ class PostAdapter : RecyclerView.Adapter<PostAdapter.PostsViewHolder>() {
 
     override fun onBindViewHolder(holder: PostsViewHolder, position: Int) {
         val data : Posts = postsList[position]
+
+
         holder.binding.postIdPlace.text = data.id.toString()
         holder.itemView.setOnClickListener {
             onPostClick.let {

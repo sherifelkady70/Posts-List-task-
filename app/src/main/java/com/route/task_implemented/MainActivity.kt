@@ -4,19 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.accessibility.AccessibilityManager.TouchExplorationStateChangeListener
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.route.task_implemented.api.ApiInterface
-import com.route.task_implemented.api.RetrofitInstance
+import com.route.task_implemented.adapter.PostAdapter
 import com.route.task_implemented.databinding.ActivityMainBinding
 import com.route.task_implemented.models.Posts
 import com.route.task_implemented.viewmodel.PostsViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -46,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareRV(){
-        postsAdapter=PostAdapter()
+        postsAdapter= PostAdapter()
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = postsAdapter
     }
