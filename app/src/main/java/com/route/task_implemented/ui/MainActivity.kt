@@ -1,4 +1,4 @@
-package com.route.task_implemented
+package com.route.task_implemented.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.route.task_implemented.Constants
 import com.route.task_implemented.adapter.PostAdapter
 import com.route.task_implemented.databinding.ActivityMainBinding
 import com.route.task_implemented.models.Posts
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun makeIntent(position:Int){
-        val intent = Intent(this@MainActivity,DetailsActivity::class.java)
+        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
         intent.putExtra(Constants.ID_KEY, viewModel.getPostLiveData().value?.get(position)?.id)
         intent.putExtra(Constants.USERID_KEY, viewModel.getPostLiveData().value?.get(position)?.userId)
         Log.d("makeIntent","${viewModel.getPostLiveData().value?.get(position)?.userId}")

@@ -1,7 +1,8 @@
-package com.route.task_implemented
+package com.route.task_implemented.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.route.task_implemented.Constants
 import com.route.task_implemented.databinding.ActivityDetailsBinding
 
 class DetailsActivity : AppCompatActivity() {
